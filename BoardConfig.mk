@@ -33,7 +33,7 @@ TARGET_NO_BOOTLOADER := true
 # Inline kernel
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/lge/bullhead
-TARGET_KERNEL_CONFIG := lineageos_bullhead_defconfig
+TARGET_KERNEL_CONFIG := franco_defconfig
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
@@ -85,6 +85,8 @@ TARGET_NO_RPC := true
 
 BOARD_EGL_CFG := device/lge/bullhead/egl.cfg
 
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_ROOT_EXTRA_FOLDERS += firmware persist
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
 # Increase the size if shaders of size greater than 12KB are used.
@@ -150,7 +152,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
 BOARD_SEPOLICY_DIRS += \
-    device/lge/bullhead/sepolicy
+    device/lge/bullhead/sepolicy-minimal
 
 TARGET_USES_64_BIT_BINDER := true
 

@@ -574,5 +574,42 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.facelock.rec_timeout=3500 \
     ro.facelock.est_max_time=600
 
+#Missing maybe is util
+PRODUCT_PACKAGES += \
+    libnetutils \
+    libdroidmedia \
+    minimediaservice \
+    minisfservice \
+    miniafservice \
+    libmedia_compat_layer \
+    libsf_compat_layer \
+    libui_compat_layer \
+    rild \
+    android.hardware.radio@1.0 \
+    android.hardware.contexthub@1.0 \
+    android.hardware.media.omx@1.0-service \
+    android.hardware.bluetooth@1.0 \
+    android.hardware.bluetooth.a2dp@1.0
+
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-service \
+    android.hardware.power@1.0 \
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.1 \
+    power.default
+
+#Halium
+# UBPorts Udev rules
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/halium/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules \
+    $(LOCAL_PATH)/halium/70-android.rules:system/halium/usr/lib/lxc-android-config/70-android.rules \
+    $(LOCAL_PATH)/halium/70-android.rules:system/halium/etc/udev/rules.d/70-android.rules \
+    $(LOCAL_PATH)/halium/rsyslog.conf:system/halium/etc/rsyslog.conf \
+    $(LOCAL_PATH)/halium/ofono.override:system/halium/etc/init/ofono.override \
+    $(LOCAL_PATH)/halium/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
+    $(LOCAL_PATH)/halium/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/halium/config-default.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
+
+
 $(call inherit-product-if-exists, hardware/qcom/msm8994/msm8992.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)

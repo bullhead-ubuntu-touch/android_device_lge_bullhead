@@ -26,6 +26,22 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
+#A/B builds require us to create the mount points at compile time.
+#Just creating it for all cases since it does not hurt.
+FIRMWARE_MOUNT_POINT := $(PRODUCT_OUT)/firmware
+PERSIST_MOUNT_POINT := $(PRODUCT_OUT)/persist
+
+$(FIRMWARE_MOUNT_POINT):
+	@echo "Creating $(FIRMWARE_MOUNT_POINT)"
+	@mkdir -p $(FIRMWARE_MOUNT_POINT)
+
+$(PERSIST_MOUNT_POINT):
+	@echo "Creating $(PERSIST_MOUNT_POINT)"
+	@mkdir -p $(PERSIST_MOUNT_POINT)
+
+ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MOUNT_POINT) \
+								 $(PERSIST_MOUNT_POINT)
+
 LOCAL_MODULE := bullhead_wlan_mac
 wlan_mac_path := $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/wlan_mac.bin
 LOCAL_POST_INSTALL_CMD := $(hide) mkdir -p $(dir $(wlan_mac_path)) && ln -sf /persist/wlan_mac.bin $(wlan_mac_path)
