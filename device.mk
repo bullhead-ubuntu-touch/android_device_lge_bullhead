@@ -596,7 +596,57 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.0 \
     android.hardware.power@1.0-impl \
     android.hardware.power@1.1 \
-    power.default
+    power.default \
+    android.hardware.sensors@1.0-service
+
+# Misc
+PRODUCT_PACKAGES += \
+    libandroid \
+    libandroid_runtime \
+    libjnigraphics \
+    libstagefright_soft_amrwbenc \
+    libstagefright_soft_flacenc \
+    libstagefright_soft_avcdec \
+    libstagefright_soft_mpeg4dec \
+    libstagefright_soft_hevcdec \
+    libstagefright_soft_mpeg4dec \
+    libstagefright_soft_vpxdec \
+    libstagefright_soft_mpeg4enc \
+    libstagefright_soft_vpxenc \
+    libstagefright_soft_aacdec \
+    libstagefright_soft_amrdec \
+    libstagefright_soft_flacdec \
+    libstagefright_soft_g711dec \
+    libstagefright_soft_gsmdec \
+    libstagefright_soft_mp3dec \
+    libstagefright_soft_opusdec \
+    libstagefright_soft_rawdec \
+    libstagefright_soft_aacenc \
+    libstagefright_soft_vorbisdec \
+    libstagefright_soft_amrnbenc \
+    libstagefright_soft_avcenc \
+    libRS \
+    libRSSupport \
+    libRS_internal \
+    libRSDriver \
+    libRSCacheDir \
+    libRSCpuRef \
+    libcompiler_rt \
+    tls-padding \
+    libskia \
+    libstagefright_ccodec
+
+# Media
+PRODUCT_PACKAGES += \
+    libmedia_omx \
+    android.frameworks.displayservice@1.0 \
+    drmserver \
+    mediadrmserver \
+    mediaextractor \
+    sensorservice \
+    libsensorservice \
+    libsensorservicehidl \
+    vendor.camera-provider-2-4
 
 #Halium
 # UBPorts Udev rules
@@ -605,10 +655,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/halium/70-android.rules:system/halium/usr/lib/lxc-android-config/70-android.rules \
     $(LOCAL_PATH)/halium/70-android.rules:system/halium/etc/udev/rules.d/70-android.rules \
     $(LOCAL_PATH)/halium/rsyslog.conf:system/halium/etc/rsyslog.conf \
-    $(LOCAL_PATH)/halium/ofono.override:system/halium/etc/init/ofono.override \
+    $(LOCAL_PATH)/halium/ril_subscription.conf:system/halium/etc/ofono/ril_subscription.conf \
     $(LOCAL_PATH)/halium/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
     $(LOCAL_PATH)/halium/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     $(LOCAL_PATH)/halium/config-default.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
+    $(LOCAL_PATH)/crash_dump.arm.policy:system/etc/seccomp_policy/crash_dump.arm.policy \
+    $(LOCAL_PATH)/halium/etc/pulse/touch-android9.pa:system/halium/etc/pulse/touch-android9.pa \
+    $(LOCAL_PATH)/halium/usensord.conf:system/halium/usr/share/upstart/sessions/usensord.conf \
 
 
 $(call inherit-product-if-exists, hardware/qcom/msm8994/msm8992.mk)
